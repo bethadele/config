@@ -5,8 +5,8 @@ set nolist
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
-set t_8f=u;%lu;%lum
-set t_8b=u;%lu;%lum
+set t_8f=[38;2;%lu;%lu;%lum
+set t_8b=[48;2;%lu;%lu;%lum
 
 set nocursorline " don't highlight current line
 
