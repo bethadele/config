@@ -1,0 +1,10 @@
+# Add your local tmux config here
+
+# set -g mode-mouse on
+# set -g mouse-resize-pane on
+# set -g mouse-select-pane on
+# set -g mouse-select-window on
+
+# Allow jumping words
+set-window-option -g xterm-keys on
+

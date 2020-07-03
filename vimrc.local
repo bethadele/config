@@ -1,4 +1,17 @@
+set wrap
+set linebreak
+set nolist
+
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+
+set t_8f=u;%lu;%lum
+set t_8b=u;%lu;%lum
+
 set nocursorline " don't highlight current line
+
+" carried over from previous config:
+" filetype plugin on
 
 " keyboard shortcuts
 inoremap jj <ESC>
@@ -91,3 +104,14 @@ let g:go_fmt_command = "goimports"
 au FileType html imap <expr> <TAB> emmet#expandAbbrIntelligent("\<tab>")
 
 let NERDTreeQuitOnOpen = 1
+
+" Pencil - vim for writing
+" let g:pencil#wrapModeDefault = 'soft'   " default is 'hard'
+" let g:pencil#textwidth = 74
+"
+" augroup pencil
+"   autocmd!
+"   autocmd FileType markdown,mkd call pencil#init()
+"   autocmd FileType text         call pencil#init({'wrap': 'hard'})
+" augroup END
+"
