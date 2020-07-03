@@ -1,0 +1,93 @@
+set nocursorline " don't highlight current line
+
+" keyboard shortcuts
+inoremap jj <ESC>
+
+" highlight search
+"set hlsearch
+"nmap <leader>hl :let @/ = ""<CR>
+
+" gui settings
+if (&t_Co == 256 || has('gui_running'))
+  if ($TERM_PROGRAM == 'iTerm.app')
+    colorscheme solarized
+  else
+    colorscheme desert
+  endif
+endif
+
+" Disambiguate ,a & ,t from the Align plugin, making them fast again.
+"
+" This section is here to prevent AlignMaps from adding a bunch of mappings
+" that interfere with the very-common ,a and ,t mappings. This will get run
+" at every startup to remove the AlignMaps for the *next* vim startup.
+"
+" If you do want the AlignMaps mappings, remove this section, remove
+" ~/.vim/bundle/Align, and re-run rake in maximum-awesome.
+function! s:RemoveConflictingAlignMaps()
+  if exists("g:loaded_AlignMapsPlugin")
+    AlignMapsClean
+  endif
+endfunction
+command! -nargs=0 RemoveConflictingAlignMaps call s:RemoveConflictingAlignMaps()
+silent! autocmd VimEnter * RemoveConflictingAlignMaps
+
+let g:go_fmt_command = "goimports"
+" stolen from
+" https://source.datanerd.us/ctroughton/dotfiles/blob/master/.vimrc
+set ts=2 sts=2 sw=2 expandtab
+if has("autocmd")
+  autocmd FileType make setlocal ts=2 sts=2 sw=2 noexpandtab
+  autocmd FileType groovy setlocal ts=4 sts=4 sw=4 expandtab
+  autocmd FileType gradle setlocal ts=4 sts=4 sw=4 expandtab
+
+  " Something is effing with vim-ruby, not highlighting Gemfiles
+  autocmd BufNewFile,BufRead Gemfile set filetype=ruby
+  autocmd BufNewFile,BufRead *.groovy set filetype=groovy
+  autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+  autocmd BufWritePre *.js,*.jsx,*.css,*.scss,*.rb :call <SID>StripTrailingWhitespaces()
+  "autocmd BufReadPost quickfix :AnsiEsc<CR>
+endif
+" set listchars=tab:_\ ,eol:¬
+" set listchars=tab:▸\ ,trail:▫
+" set listchars=tab:_\ ,trail:▫
+set listchars=tab:\│\ ,trail:▫
+set termguicolors
+highlight SpecialKey guifg=#4a4a4a
+
+" nnoremap <space> :
+" inoremap jk <esc>
+" nmap <silent> <c-k> :wincmd k<CR>
+" nmap <silent> <c-j> :wincmd j<CR>
+" nmap <silent> <c-h> :wincmd h<CR>
+" nmap <silent> <c-l> :wincmd l<CR>
+" nmap <leader>i :TagbarToggle<CR>
+" inoremap <Up> <NOP>
+" inoremap <Down> <NOP>
+" inoremap <Left> <NOP>
+" inoremap <Right> <NOP>
+" noremap <Up> <NOP>
+" noremap <Down> <NOP>
+" noremap <Left> <NOP>
+" noremap <Right> <NOP>
+
+let delimitMate_expand_cr = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+let g:go_fmt_command = "goimports"
+
+" au FileType go nmap <leader>r <Plug>(go-run)
+" au FileType go nmap <leader>b <Plug>(go-build)
+" au FileType go nmap <leader>t :GoTest<CR>
+" au FileType go nmap <leader>c :GoCoverageToggle<CR>
+" au FileType go nmap <leader>ds <Plug>(go-def-split)
+" au FileType go nmap <leader>d <Plug>(go-doc)
+" au FileType go nmap <leader>e <Plug>(go-rename)
+" au FileType go nmap <leader>s <Plug>(go-implements)
+
+au FileType html imap <expr> <TAB> emmet#expandAbbrIntelligent("\<tab>")
+
+let NERDTreeQuitOnOpen = 1
