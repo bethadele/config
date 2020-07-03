@@ -1,3 +1,13 @@
+set wrap
+set linebreak
+set nolist
+
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+
+set t_8f=u;%lu;%lum
+set t_8b=u;%lu;%lum
+
 set nocursorline " don't highlight current line
 
 " carried over from previous config:
@@ -105,6 +115,3 @@ let NERDTreeQuitOnOpen = 1
 "   autocmd FileType text         call pencil#init({'wrap': 'hard'})
 " augroup END
 "
-" set wrap
-" set linebreak
-" set nolist
