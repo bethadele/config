@@ -1,3 +1,5 @@
+source ~/.zsh-custom/aliases.zsh
+
 # want your terminal to support 256 color schemes? I do ...
 export TERM="xterm-256color"
 
